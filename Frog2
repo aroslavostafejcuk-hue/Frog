@@ -1,0 +1,57 @@
+import telebot
+import requests
+
+TOKEN = "8603726685:AAH3TJFCihvjhxn4_KdL6jWtzY-Mwb_lvxE import telebot
+import requests
+
+TOKEN = "ТВОЙ_ТОКЕН"
+
+bot = telebot.TeleBot(TOKEN)
+
+@bot.message_handler(commands=['start'])
+def start(message):
+    bot.reply_to(message, "Напиши /weather")
+
+@bot.message_handler(commands=['weather'])
+def weather(message):
+
+    url = "https://wttr.in/Petropavlovsk?format=j1"
+
+    data = requests.get(url).json()
+
+    temp = data["current_condition"][0]["temp_C"]
+    desc = data["current_condition"][0]["weatherDesc"][0]["value"]
+
+    bot.reply_to(
+        message,
+        f"🌤 Погода в Петропавловске\n🌡 Температура: {temp}°C\n☁️ {desc}"
+    )
+
+print("Бот работает")
+
+bot.infinity_polling()"
+
+bot = telebot.TeleBot(TOKEN)
+
+@bot.message_handler(commands=['start'])
+def start(message):
+    bot.reply_to(message, "Напиши /weather")
+
+@bot.message_handler(commands=['weather'])
+def weather(message):
+
+    url = "https://wttr.in/Petropavlovsk?format=j1"
+
+    data = requests.get(url).json()
+
+    temp = data["current_condition"][0]["temp_C"]
+    desc = data["current_condition"][0]["weatherDesc"][0]["value"]
+
+    bot.reply_to(
+        message,
+        f"🌤 Погода в Петропавловске\n🌡 Температура: {temp}°C\n☁️ {desc}"
+    )
+
+print("Бот работает")
+
+bot.infinity_polling()
